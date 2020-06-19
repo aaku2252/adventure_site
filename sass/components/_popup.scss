@@ -25,6 +25,7 @@
 	&_left {
 		width: 33.33333%;
 		display: table-cell;
+		vertical-align: middle;
 	}
 	&_right {
 		width: 66.66667%;
@@ -35,6 +36,11 @@
 	&_img {
 		display: block;
 		width: 100%;
+		&:not(:last-child) {
+			@include respond(tab-port) {
+				padding-bottom: 5rem;
+			}
+		}
 	}
 	&_text {
 		font-size: 1.4rem;
@@ -45,6 +51,11 @@
 		column-rule: 1px solid $color-grey-light-2;
 
 		hyphens: auto;
+		@include respond(tab-port) {
+			column-count: 1;
+			column-gap: 4rem;
+			column-rule: 1px solid $color-grey-light-2;
+		}
 	}
 	&:target {
 		opacity: 1;
@@ -71,6 +82,31 @@
 
 		&:hover {
 			color: $color-primary;
+		}
+	}
+
+	@include respond(phone) {
+		&_left {
+			width: 100%;
+			display: block;
+			// position: absolute;
+			// top: 0;
+			// left: 0;
+			// z-index: -1;
+		}
+		&_right {
+			width: 100%;
+			display: block;
+			text-align: center;
+		}
+		&_img {
+			display: inline-block;
+			width: 50%;
+			float: left;
+
+			&:not(:last-child) {
+				padding-bottom: 0;
+			}
 		}
 	}
 }

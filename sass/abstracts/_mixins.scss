@@ -11,3 +11,61 @@
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
+
+// media queries manager
+/*
+0-600 :phone
+600-900:tablet portrait
+900-1200:tablet landscape
+1200-1800 :desktop-where  our normal style applies
+1800 + : big desktop
+*/
+//  todo: this is for demo purpose of basic media query mixin
+// @mixin respond-phone {
+// 	@media (max-width: 600px) {
+// 		@content;
+// 	}
+// }
+
+/*
+$breakpoint choices
+-phone
+-tab-port
+-tab-land
+-big-desktop
+
+todo- order:base typography general layout
+*/
+/* we will not use px  but will use em because if a user inc. the default font size than the site may collapse. */
+//* media queries have no effect due to the ems set by the developer,
+// *they takes the default size of browser that is 16px.they can be affected if thew user changes them in browser.
+@mixin respond($breakpoint) {
+	//* 600px
+
+	@if $breakpoint==phone {
+		@media (max-width: 37.5em) {
+			@content;
+		}
+	}
+	// * 900px
+	@if $breakpoint==tab-port {
+		@media (max-width: 56.25em) {
+			@content;
+		}
+	}
+	// * 1200px
+	@if $breakpoint==tab-land {
+		@media (max-width: 75em) {
+			@content;
+		}
+	}
+
+	//  since we are taking the desktop first approach so we need not to mention media queries for
+	// 1200 to 1800px screen sizes .
+	// * 1800px
+	@if $breakpoint==big-desktop {
+		@media (min-width: 112.5em) {
+			@content;
+		}
+	}
+}
